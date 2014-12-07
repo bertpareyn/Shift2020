@@ -19,17 +19,19 @@
 		<?php endif; ?>
 
 		<?php if ( is_single() ) : ?>
+		<?php if ( function_exists('yoast_breadcrumb') ) {
+			yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+		} ?>
+		<div class="entry-meta">
+			<?php twentythirteen_entry_meta(true); ?>
+			<?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
+		</div><!-- .entry-meta -->
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<?php else : ?>
 		<h1 class="entry-title">
 			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		</h1>
 		<?php endif; // is_single() ?>
-
-		<div class="entry-meta">
-			<?php twentythirteen_entry_meta(); ?>
-			<?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
-		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
 	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
@@ -42,6 +44,11 @@
 		<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
 	</div><!-- .entry-content -->
 	<?php endif; ?>
+
+	<div class="entry-meta">
+		<?php twentythirteen_entry_meta(false, false, true); ?>
+		<?php twentythirteen_entry_meta(false, false, false, true); ?>
+	</div><!-- .entry-meta -->
 
 	<footer class="entry-meta">
 		<?php if ( comments_open() && ! is_single() ) : ?>

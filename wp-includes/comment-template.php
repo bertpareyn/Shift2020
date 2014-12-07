@@ -2100,19 +2100,17 @@ function comment_form( $args = array(), $post_id = null ) {
 	$fields = apply_filters( 'comment_form_default_fields', $fields );
 	$defaults = array(
 		'fields'               => $fields,
-		'comment_field'        => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
+		'comment_field'        => '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment..."></textarea></p>',
 		/** This filter is documented in wp-includes/link-template.php */
 		'must_log_in'          => '<p class="must-log-in">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
 		/** This filter is documented in wp-includes/link-template.php */
 		'logged_in_as'         => '<p class="logged-in-as">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>' ), get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
-		'comment_notes_before' => '<p class="comment-notes">' . __( 'Your email address will not be published.' ) . ( $req ? $required_text : '' ) . '</p>',
-		'comment_notes_after'  => '<p class="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>',
 		'id_form'              => 'commentform',
 		'id_submit'            => 'submit',
 		'name_submit'          => 'submit',
-		'title_reply'          => __( 'Leave a Reply' ),
-		'title_reply_to'       => __( 'Leave a Reply to %s' ),
-		'cancel_reply_link'    => __( 'Cancel reply' ),
+		'title_reply'          => __( 'Leave a Comment' ),
+		'title_reply_to'       => __( 'Leave a Comment to %s' ),
+		'cancel_reply_link'    => __( 'Cancel Comment' ),
 		'label_submit'         => __( 'Post Comment' ),
 		'format'               => 'xhtml',
 	);
@@ -2139,7 +2137,6 @@ function comment_form( $args = array(), $post_id = null ) {
 			do_action( 'comment_form_before' );
 			?>
 			<div id="respond" class="comment-respond">
-				<h3 id="reply-title" class="comment-reply-title"><?php comment_form_title( $args['title_reply'], $args['title_reply_to'] ); ?> <small><?php cancel_comment_reply_link( $args['cancel_reply_link'] ); ?></small></h3>
 				<?php if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) : ?>
 					<?php echo $args['must_log_in']; ?>
 					<?php

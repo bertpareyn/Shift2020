@@ -39,14 +39,24 @@
 					<button class="menu-toggle"><?php _e( 'Menu', 'twentythirteen' ); ?></button>
 					<a class="screen-reader-text skip-link" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentythirteen' ); ?>"><?php _e( 'Skip to content', 'twentythirteen' ); ?></a>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-					<!--<?php get_search_form(); ?>-->
 				</nav><!-- #site-navigation -->
 			</div><!-- #navbar -->
 
-			<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-			</a>
+			<div class="home-link">				
+				<img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" title="Shift2020" class="shift-logo" />
+				<h2 class="site-description"><?php echo get_the_title( $ID ); ?> </h2>
+			</div>
+
+	<?php
+		if($post->post_parent)
+			$children = wp_list_pages("title_li=&child_of=".$post->post_parent."&echo=0");
+		else
+			$children = wp_list_pages("title_li=&child_of=".$post->ID."&echo=0");
+		if ($children) { ?>
+			<ul class="header-subnavigation">
+				<?php echo $children; ?>
+			</ul>
+	<?php } ?>
 		</header><!-- #masthead -->
 
 		<div id="main" class="site-main">

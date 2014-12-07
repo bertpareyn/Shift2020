@@ -317,23 +317,23 @@ if ( ! function_exists( 'twentythirteen_entry_meta' ) ) :
  *
  * @since Twenty Thirteen 1.0
  */
-function twentythirteen_entry_meta() {
+function twentythirteen_entry_meta($date_enabled, $categories_enabled, $tags_enabled, $social_enabled) {
 	if ( is_sticky() && is_home() && ! is_paged() )
 		echo '<span class="featured-post">' . __( 'Sticky', 'twentythirteen' ) . '</span>';
 
-	if ( ! has_post_format( 'link' ) && 'post' == get_post_type() )
+	if ( (! has_post_format( 'link' ) && 'post' == get_post_type()) && $date_enabled )
 		twentythirteen_entry_date();
 
 	// Translators: used between list items, there is a space after the comma.
 	$categories_list = get_the_category_list( __( ', ', 'twentythirteen' ) );
-	if ( $categories_list ) {
+	if ( $categories_list && $categories_enabled) {
 		echo '<span class="categories-links">' . $categories_list . '</span>';
 	}
 
 	// Translators: used between list items, there is a space after the comma.
-	$tag_list = get_the_tag_list( '', __( ', ', 'twentythirteen' ) );
-	if ( $tag_list ) {
-		echo '<span class="tags-links">' . $tag_list . '</span>';
+	$tag_list = get_the_tag_list( '', __( '', 'twentythirteen' ) );
+	if ( $tag_list && $tags_enabled) {
+		echo '<h2>Tags</h2><span class="tags-links">' . $tag_list . '</span>';
 	}
 
 	// Post author
@@ -343,6 +343,10 @@ function twentythirteen_entry_meta() {
 			esc_attr( sprintf( __( 'View all posts by %s', 'twentythirteen' ), get_the_author() ) ),
 			get_the_author()
 		);
+	}
+
+	if ( $social_enabled && function_exists( 'ADDTOANY_SHARE_SAVE_KIT' )) {
+		echo '<div class="social-container">' . ADDTOANY_SHARE_SAVE_KIT() . '</div>';
 	}
 }
 endif;
@@ -529,3 +533,133 @@ function twentythirteen_customize_preview_js() {
 	wp_enqueue_script( 'twentythirteen-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20130226', true );
 }
 add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
+
+// Register Custom Speaker Post Type
+function speaker_post_type() {
+
+	$labels = array(
+		'name'                => 'Speakers',
+		'singular_name'       => 'Speaker',
+		'menu_name'           => 'Speaker post',
+		'parent_item_colon'   => '',
+		'all_items'           => 'Speaker posts',
+		'view_item'           => '',
+		'add_new_item'        => 'Add New Speaker Post',
+		'add_new'             => 'Add new',
+		'edit_item'           => 'Edit item',
+		'update_item'         => 'Update item',
+		'search_items'        => 'Search Item',
+		'not_found'           => 'Not found',
+		'not_found_in_trash'  => 'Not found in Trash',
+	);
+	$args = array(
+		'label'               => 'speaker',
+		'description'         => 'Show a description of a speaker next to a cover image',
+		'labels'              => $labels,
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'speaker', $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'speaker_post_type', 0 );
+
+
+// Register Custom Book Post Type
+function book_post_type() {
+
+	$labels = array(
+		'name'                => 'Books',
+		'singular_name'       => 'Book',
+		'menu_name'           => 'Book post',
+		'parent_item_colon'   => '',
+		'all_items'           => 'Book posts',
+		'view_item'           => '',
+		'add_new_item'        => 'Add New Book Post',
+		'add_new'             => 'Add new',
+		'edit_item'           => 'Edit item',
+		'update_item'         => 'Update item',
+		'search_items'        => 'Search Item',
+		'not_found'           => 'Not found',
+		'not_found_in_trash'  => 'Not found in Trash',
+	);
+	$args = array(
+		'label'               => 'book',
+		'description'         => 'Show a description of a book next to a cover image',
+		'labels'              => $labels,
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'book', $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'book_post_type', 0 );
+
+// Register Custom Event Post Type
+function event_post_type() {
+
+	$labels = array(
+		'name'                => 'Events',
+		'singular_name'       => 'Event',
+		'menu_name'           => 'Event post',
+		'parent_item_colon'   => '',
+		'all_items'           => 'Event posts',
+		'view_item'           => '',
+		'add_new_item'        => 'Add New Event Post',
+		'add_new'             => 'Add new',
+		'edit_item'           => 'Edit item',
+		'update_item'         => 'Update item',
+		'search_items'        => 'Search Item',
+		'not_found'           => 'Not found',
+		'not_found_in_trash'  => 'Not found in Trash',
+	);
+	$args = array(
+		'label'               => 'event',
+		'description'         => 'Show a description of an event next to a cover image',
+		'labels'              => $labels,
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'event', $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'event_post_type', 0 );
