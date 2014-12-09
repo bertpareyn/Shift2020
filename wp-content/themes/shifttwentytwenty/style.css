@@ -929,6 +929,8 @@ div.nav-menu > ul {
 	position: relative;
 }
 
+.header-subnavigation-mobile li a,
+.toggled-on .nav-menu > li a,
 .nav-menu li a {
 	color: #2d2d2d;
 	display: block;
@@ -939,10 +941,25 @@ div.nav-menu > ul {
 	text-decoration: none;
 }
 
-.nav-menu li a {
-	padding: 17px 20px;
+.header-subnavigation-mobile li a {
+	color: #FFF;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	font-weight: 500;
 }
 
+.header-subnavigation-mobile li.current_page_item a,
+.header-subnavigation-mobile li a:hover {
+	color: #171717 !important;
+	background-image: none !important;
+	background-color: #FFF !important;
+}
+
+.header-subnavigation-mobile li:hover a:hover,
+.header-subnavigation-mobile li:hover a:hover span,
+.toggled-on .nav-menu > li:hover a:hover,
+.toggled-on .nav-menu > li:hover a:hover span,
 .nav-menu li:hover > a,
 .nav-menu li a:hover,
 .nav-menu li:focus > a,
@@ -2711,7 +2728,7 @@ footer.entry-meta {
 	margin: 0 auto;
     list-style-type: none;
     padding: 0;
-	width: 695px;
+	width: 340px;
 }
 
 .site-footer .widget-area #footer-social ul li {
@@ -2975,7 +2992,7 @@ footer.entry-meta {
 /* Collapse oversized image and pulled images after iPad breakpoint. */
 @media (max-width: 767px) {
 	.site-header .home-link {
-		min-height: 0;
+		min-height: 100px;
 	}
 	.site-title {
 		font-size: 36px;
@@ -3037,7 +3054,6 @@ footer.entry-meta {
 	.menu-toggle {
 		cursor: pointer;
 		display: inline-block;
-		font: bold 16px/1.3 "Source Sans Pro", Helvetica, sans-serif;
 		margin: 0;
 	}
 
@@ -3047,8 +3063,11 @@ footer.entry-meta {
 	.menu-toggle:active {
 		background: none;
 		border: none;
-		color: #141412;
-		padding: 12px 0 12px 20px;
+		color: #141412 !important;
+		font-weight: bold;
+		font-size: 16px;
+		padding: 12px 0 12px 20px !important;
+		margin: 0;
 	}
 
 	.menu-toggle:focus {
@@ -3067,6 +3086,8 @@ footer.entry-meta {
 		vertical-align: 2px;
 	}
 
+	.header-subnavigation-mobile li,
+	.header-subnavigation-mobile ul,
 	.toggled-on .nav-menu,
 	.toggled-on .nav-menu > ul {
 		display: block;
@@ -3192,6 +3213,49 @@ footer.entry-meta {
 		float: none;
 		padding-left: 0;
 		width: auto;
+	}
+
+	.header-subnavigation {
+		display: none;
+	}
+
+	.header-subnavigation-mobile {
+		display: block !important;
+	}
+
+	.box-image-container {
+		width: auto !important;
+		position: relative !important;
+	}
+
+	.box-image {
+		float: none !important;
+		width: 100% !important;
+	}
+
+	.box-image .box-description {
+		width: 80% !important;
+	}
+
+	.box-image:nth-child(2) {
+		margin-top: 0 !important;
+	}
+
+	.box-image:nth-of-type(even) .box-description {
+		bottom: inherit !important;
+		position: relative !important;
+	}
+
+	.box-image .box-description {
+		float: none !important;
+	}
+
+	.site-description {
+		margin-left: 12px !important;
+	}
+
+	.hentry {
+		padding: 0 !important;
 	}
 }
 
@@ -3420,6 +3484,12 @@ footer.entry-meta {
     position: relative;
 }
 
+.header-subnavigation-mobile {
+	display: none;
+	padding: 0;
+	margin: 5px 5px 50px 12px;
+}
+
 .header-subnavigation::after {
     content: ' ';
     display: block;
@@ -3445,6 +3515,15 @@ footer.entry-meta {
 	display: inline-block;
 	position: relative;
 	z-index: 2;
+}
+
+.header-subnavigation-mobile li {
+    background-image: url('images/mobilenav-bg.png');
+	display: inline-block;
+	height: 49px;
+	width: 100%;
+	clear: both;
+	margin-top: 4px;
 }
 
 .header-subnavigation li a {
@@ -3498,7 +3577,6 @@ textarea {
 .box-image-container {
 	clear: both;
 	margin: 50px auto;
-	width: 1200px;
 }
 
 .books-container::after,
@@ -3691,4 +3769,52 @@ textarea {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 100px;
+}
+
+@media (min-width: 768px) {
+	.site-footer .widget-area #footer-social ul {
+		width: 700px;
+	}
+}
+
+@media (max-width: 991px) {
+
+	.site-footer .widget-area #footer-social ul li {
+		float: left;
+		display: inline;
+	}
+
+	.menu-toggle,
+	.menu-toggle:hover,
+	.menu-toggle:focus,
+	.menu-toggle:active {
+		padding: 30px !important;
+	}
+
+	.page-header-title {
+		margin-top: 30px;
+		font-size: 22px;
+	}
+
+	h1 {
+		font-size: 22px;
+	}
+
+	.box-image {
+		width: 50%;
+	}
+
+	.box-image .box-description {
+		width: 90%;
+	}
+}
+
+@media (min-width: 992px) {
+	.box-image-container {
+		width: 1200px !important;
+	}
+}
+
+.mc4wp-form label {
+	font-weight: 200;
 }
