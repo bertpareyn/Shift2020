@@ -44,7 +44,6 @@
 
 			<div class="home-link">				
 				<img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" title="Shift2020" class="shift-logo" />
-				<h2 class="site-description"><?php echo get_the_title( $ID ); ?> </h2>
 			</div>
 
 	<?php
@@ -53,6 +52,7 @@
 		else
 			$children = wp_list_pages("title_li=&child_of=".$post->ID."&echo=0");
 		if ($children) { ?>
+			<h2 class="site-description"><?php echo get_the_title( $ID ); ?> </h2>
 			<ul class="header-subnavigation">
 				<?php echo $children; ?>
 			</ul>

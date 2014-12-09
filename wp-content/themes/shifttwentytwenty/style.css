@@ -787,9 +787,7 @@ img.wp-smiley,
  */
 
 .site {
-	background-color: #fff;
-	border-left: 1px solid #f2f2f2;
-	border-right: 1px solid #f2f2f2;
+	background-color: #FFF;
 	margin: 0 auto;
 	max-width: 1600px;
 	width: 100%;
@@ -845,7 +843,7 @@ img.wp-smiley,
 	width: 200px;
 	max-height: 200px;
 	display: block;
-	margin: 70px auto 100px;
+	margin: 70px auto 0;
 }
 
 .site-header .site-title:hover {
@@ -861,8 +859,12 @@ img.wp-smiley,
 }
 
 .site-description {
-	font: 300 italic 24px "Source Sans Pro", Helvetica, sans-serif;
 	margin: 0;
+	margin-left: 15%;
+	margin-bottom: 30px;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 35px;
 }
 
 
@@ -3496,6 +3498,7 @@ textarea {
 	width: 1200px;
 }
 
+.books-container::after,
 .box-image-container::after {
 	display: table;
 	clear: both;
@@ -3511,8 +3514,11 @@ textarea {
 
 .box-image:nth-of-type(even) {
 	float: right;
-	margin-top: 100px;
 	position: relative;
+}
+
+.box-image:nth-child(2) {
+	margin-top: 100px;
 }
 
 .box-image .box-description {
@@ -3521,8 +3527,10 @@ textarea {
 	float: right;
 	max-height: 600px;
 	overflow: hidden;
-	padding: 12px 40px;
+	padding: 12px 40px 22px;
 	width: 50%;
+	word-break: break-word;
+	word-wrap: break-word;
 }
 
 .box-image:nth-of-type(even) .box-description {
@@ -3545,6 +3553,13 @@ textarea {
 	font-weight: 600;
 	margin: 7px 0;
 	display: block;
+}
+
+.box-image .box-description small:last-child {
+	clear: both;
+	display: block;
+	font-size: 14px;
+	font-style: italic;
 }
 
 .box-image .box-description h3 + p {
@@ -3630,6 +3645,7 @@ textarea {
 	width: 200px;
 }
 
+.box-image .box-description a,
 .book-container .book-image img + a {
 	background: #220e10;
 	background-color: #220e10;
@@ -3646,9 +3662,30 @@ textarea {
 	text-transform: uppercase;
 }
 
+.box-image .box-description a:hover,
 .book-container .book-image img + a:hover {
 	background: #555;
 	background-color: #555;
 	color: #FFF !important;
 	text-decoration: none;
+}
+
+.box-image:nth-of-type(odd) .box-description a {
+	background: #FFF;
+	background-color: #FFF;
+	color: #171717 !important;
+}
+
+.box-image:nth-of-type(odd) .box-description a:hover {
+	background: #555;
+	background-color: #555;
+	color: #FFF !important;
+}
+
+.page-header-title {
+	text-align: center;
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
 }

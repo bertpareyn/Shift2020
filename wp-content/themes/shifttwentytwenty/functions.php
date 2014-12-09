@@ -577,6 +577,91 @@ function speaker_post_type() {
 // Hook into the 'init' action
 add_action( 'init', 'speaker_post_type', 0 );
 
+// Register Custom Speaker Post Type
+function consulting_post_type() {
+
+	$labels = array(
+		'name'                => 'Consulting',
+		'singular_name'       => 'Consulting',
+		'menu_name'           => 'Consulting post',
+		'parent_item_colon'   => '',
+		'all_items'           => 'Consulting posts',
+		'view_item'           => '',
+		'add_new_item'        => 'Add New Consulting Post',
+		'add_new'             => 'Add new',
+		'edit_item'           => 'Edit item',
+		'update_item'         => 'Update item',
+		'search_items'        => 'Search Item',
+		'not_found'           => 'Not found',
+		'not_found_in_trash'  => 'Not found in Trash',
+	);
+	$args = array(
+		'label'               => 'consulting',
+		'description'         => 'Show a description of consulting next to a cover image',
+		'labels'              => $labels,
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'consulting', $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'consulting_post_type', 0 );
+
+// Register Custom Speaker Post Type
+function casestudie_post_type() {
+
+	$labels = array(
+		'name'                => 'Case Study',
+		'singular_name'       => 'Case Study',
+		'menu_name'           => 'Case Study post',
+		'parent_item_colon'   => '',
+		'all_items'           => 'Case Study posts',
+		'view_item'           => '',
+		'add_new_item'        => 'Add New Case Study Post',
+		'add_new'             => 'Add new',
+		'edit_item'           => 'Edit item',
+		'update_item'         => 'Update item',
+		'search_items'        => 'Search Item',
+		'not_found'           => 'Not found',
+		'not_found_in_trash'  => 'Not found in Trash',
+	);
+	$args = array(
+		'label'               => 'casestudy',
+		'description'         => 'Show a description of case study next to a cover image',
+		'labels'              => $labels,
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'casestudy', $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'casestudie_post_type', 0 );
 
 // Register Custom Book Post Type
 function book_post_type() {
@@ -620,6 +705,92 @@ function book_post_type() {
 
 // Hook into the 'init' action
 add_action( 'init', 'book_post_type', 0 );
+
+// Register Custom Book Post Type
+function slide_post_type() {
+
+	$labels = array(
+		'name'                => 'Slides',
+		'singular_name'       => 'Slide',
+		'menu_name'           => 'Slide post',
+		'parent_item_colon'   => '',
+		'all_items'           => 'Slide posts',
+		'view_item'           => '',
+		'add_new_item'        => 'Add New Slide Post',
+		'add_new'             => 'Add new',
+		'edit_item'           => 'Edit item',
+		'update_item'         => 'Update item',
+		'search_items'        => 'Search Item',
+		'not_found'           => 'Not found',
+		'not_found_in_trash'  => 'Not found in Trash',
+	);
+	$args = array(
+		'label'               => 'slide',
+		'description'         => 'Show a description of a set of slides next to a cover image',
+		'labels'              => $labels,
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'slide', $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'slide_post_type', 0 );
+
+// Register Custom Book Post Type
+function article_post_type() {
+
+	$labels = array(
+		'name'                => 'Articles',
+		'singular_name'       => 'Article',
+		'menu_name'           => 'Article post',
+		'parent_item_colon'   => '',
+		'all_items'           => 'Article posts',
+		'view_item'           => '',
+		'add_new_item'        => 'Add New Article Post',
+		'add_new'             => 'Add new',
+		'edit_item'           => 'Edit item',
+		'update_item'         => 'Update item',
+		'search_items'        => 'Search Item',
+		'not_found'           => 'Not found',
+		'not_found_in_trash'  => 'Not found in Trash',
+	);
+	$args = array(
+		'label'               => 'article',
+		'description'         => 'Show a description of an articles next to a cover image',
+		'labels'              => $labels,
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'article', $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'article_post_type', 0 );
 
 // Register Custom Event Post Type
 function event_post_type() {

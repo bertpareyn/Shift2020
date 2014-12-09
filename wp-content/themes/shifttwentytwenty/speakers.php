@@ -18,7 +18,7 @@ get_header(); ?>
                 $wp_query = new WP_Query($args); 
             ?>
 
-            <h1 style="text-align: center;">We span the world, speaking at many major events</h1>
+            <h1 class="page-header-title">We span the world, speaking at many major events</h1>
 
             <div class="box-image-container">
                 <?php while ( $wp_query->have_posts() ) : the_post(); ?>
