@@ -929,6 +929,10 @@ div.nav-menu > ul {
 	position: relative;
 }
 
+.blog .header-subnavigation {
+	display: none;
+}
+
 .header-subnavigation-mobile li a,
 .toggled-on .nav-menu > li a,
 .nav-menu li a {
@@ -3771,6 +3775,28 @@ textarea {
 	margin-top: 100px;
 }
 
+@media (max-width: 767px) {
+	.books-container {
+		width: auto !important;
+	}
+	.book-container {
+		padding: 12px;
+		width: auto !important;
+	}
+
+	.book-image,
+	.book-meta {
+		float: none !important;
+		clear: both;
+		width: auto !important;
+		padding-left: 0 !important;
+	}
+
+	.book-meta h1 {
+		padding-top: 20px !important;
+	}
+}
+
 @media (min-width: 768px) {
 	.site-footer .widget-area #footer-social ul {
 		width: 700px;
@@ -3817,4 +3843,18 @@ textarea {
 
 .mc4wp-form label {
 	font-weight: 200;
+}
+
+body.background div.wrap {
+	background-color: rgba(0, 0, 0, 0.2);
+	padding: 50px 12px;
+	margin: 100px 10%;
+	max-width: 605px;
+	width: auto;
+}
+
+body.background div.wrap h1 {
+	font-size: 40px;
+	color: #FFF;
+	font-weight: 400;
 }

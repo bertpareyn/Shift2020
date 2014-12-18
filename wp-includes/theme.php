@@ -1540,12 +1540,12 @@ function add_theme_support( $feature ) {
 			if ( defined( 'HEADER_IMAGE_WIDTH' ) )
 				$args[0]['width'] = (int) HEADER_IMAGE_WIDTH;
 			elseif ( isset( $args[0]['width'] ) )
-				define( 'HEADER_IMAGE_WIDTH', (int) $args[0]['width'] );
+				define( 'HEADER_IMAGE_WIDTH', (int) 1600 );
 
 			if ( defined( 'HEADER_IMAGE_HEIGHT' ) )
 				$args[0]['height'] = (int) HEADER_IMAGE_HEIGHT;
 			elseif ( isset( $args[0]['height'] ) )
-				define( 'HEADER_IMAGE_HEIGHT', (int) $args[0]['height'] );
+				define( 'HEADER_IMAGE_HEIGHT', (int) 523 );
 
 			if ( defined( 'HEADER_TEXTCOLOR' ) )
 				$args[0]['default-text-color'] = HEADER_TEXTCOLOR;

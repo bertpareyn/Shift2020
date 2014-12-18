@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Page of Slides
+ * Template Name: Page of Articles
  *
  * Print posts of a Custom Post Type.
  */
@@ -12,7 +12,7 @@ get_header(); ?>
                 $args = array (
                     'post_type' => 'slide',
                     'post_status' => 'publish',
-                    'posts_per_page' => 10,
+                    'posts_per_page' => -1,
                     'ignore_sticky_posts'=> 1
                 );
                 $wp_query = new WP_Query($args); 
@@ -21,16 +21,19 @@ get_header(); ?>
             <div class="books-container">
                 <?php while ( $wp_query->have_posts() ) : the_post(); ?>
 
-                    <?php $custom_fields = get_post_custom($ID); ?>
-                    <?php $title = $custom_fields['slides_title'][0] ?>
-                    <?php $edition = $custom_fields['edition'][0] ?>
-                    <?php $note = $custom_fields['note'][0] ?>
-                    <?php $description = $custom_fields['slides_description'][0] ?>
-                    <?php $cover = wp_get_attachment_image_src($custom_fields['slides_cover'][0], 'large')[0] ?>
-                    <?php $link = $custom_fields['link'][0] ?>
-                    <?php $linkText = $custom_fields['link_text'][0] ?>
-
                     <?php
+
+                        $custom_fields = get_post_custom($ID);
+                        $title = $custom_fields['slides_title'][0];
+                        $note = $custom_fields['note'][0];
+                        $description = $custom_fields['slides_description'][0];
+                        $cover = $custom_fields['slides_cover'];
+                        $cover = $cover[0];
+                        $cover = wp_get_attachment_image_src($cover, 'large');
+                        $cover = $cover;
+                        $link = $custom_fields['link'][0];
+                        $linkText = $custom_fields['link_text'][0];
+
                         if ($link && $linkText) {
                             $addLink = true;
                             $linkButton = true;
@@ -60,7 +63,6 @@ get_header(); ?>
                         </div>
                         <div class="book-meta">
                             <h1><?php echo $title ?></h1>
-                            <h2><?php echo $edition ?></h2>
                             <h3><?php echo $note ?></h3>
                             <p><?php echo $description ?></p>
                         </div>

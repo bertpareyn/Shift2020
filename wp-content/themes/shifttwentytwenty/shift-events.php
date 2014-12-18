@@ -40,16 +40,19 @@ get_header(); ?>
                 <div class="box-image-container">
                     <?php while ( $wp_query->have_posts() ) : the_post(); ?>
 
-                        <?php $custom_fields = get_post_custom($ID); ?>
-                        <?php $event_title = $custom_fields['event_title'][0] ?>
-                        <?php $event_description = $custom_fields['event_description'][0] ?>
-                        <?php $event_start_date = $custom_fields['event_start_date'][0] ?>
-                        <?php $event_end_date = $custom_fields['event_end_date'][0] ?>
-                        <?php $event_location = $custom_fields['event_location'][0] ?>
-                        <?php $event_cover_image = wp_get_attachment_image_src($custom_fields['event_cover_image'][0], 'large')[0] ?>
-                        <?php $shift2020_event = $custom_fields['shift2020_event'][0] ?>
-
                         <?php
+                            $custom_fields = get_post_custom($ID);
+                            $event_title = $custom_fields['event_title'][0];
+                            $event_description = $custom_fields['event_description'][0];
+                            $event_start_date = $custom_fields['event_start_date'][0];
+                            $event_end_date = $custom_fields['event_end_date'][0];
+                            $event_location = $custom_fields['event_location'][0];
+                            $cover = $custom_fields['event_cover_image'];
+                            $cover = $cover[0];
+                            $cover = wp_get_attachment_image_src($cover, 'large');
+                            $cover = $cover;
+                            $shift2020_event = $custom_fields['shift2020_event'][0];
+
                             if ($event_end_date) {
                                 $date = date('jS', strtotime($event_start_date)) . ' - ' . date('jS F Y', strtotime($event_end_date));
                             } else {
@@ -104,16 +107,20 @@ get_header(); ?>
                 <div class="box-image-container">
                     <?php while ( $wp_query->have_posts() ) : the_post(); ?>
 
-                        <?php $custom_fields = get_post_custom($ID); ?>
-                        <?php $event_title = $custom_fields['event_title'][0] ?>
-                        <?php $event_description = $custom_fields['event_description'][0] ?>
-                        <?php $event_start_date = $custom_fields['event_start_date'][0] ?>
-                        <?php $event_end_date = $custom_fields['event_end_date'][0] ?>
-                        <?php $event_location = $custom_fields['event_location'][0] ?>
-                        <?php $event_cover_image = wp_get_attachment_image_src($custom_fields['event_cover_image'][0], 'large')[0] ?>
-                        <?php $shift2020_event = $custom_fields['shift2020_event'][0] ?>
-
                         <?php
+
+                            $custom_fields = get_post_custom($ID);
+                            $event_title = $custom_fields['event_title'][0];
+                            $event_description = $custom_fields['event_description'][0];
+                            $event_start_date = $custom_fields['event_start_date'][0];
+                            $event_end_date = $custom_fields['event_end_date'][0];
+                            $event_location = $custom_fields['event_location'][0];
+                            $cover = $custom_fields['event_cover_image'];
+                            $cover = $cover[0];
+                            $cover = wp_get_attachment_image_src($cover, 'large');
+                            $cover = $cover;
+                            $shift2020_event = $custom_fields['shift2020_event'][0];
+
                             if ($event_end_date) {
                                 $date = date('jS', strtotime($event_start_date)) . ' - ' . date('jS F Y', strtotime($event_end_date));
                             } else {

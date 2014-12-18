@@ -105,6 +105,11 @@ function twentythirteen_setup() {
 
 	// This theme uses its own gallery styles.
 	add_filter( 'use_default_gallery_style', '__return_false' );
+
+	function custom_excerpt_length( $length ) {
+		return 200000;
+	}
+	add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 }
 add_action( 'after_setup_theme', 'twentythirteen_setup' );
 
