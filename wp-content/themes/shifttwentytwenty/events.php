@@ -44,8 +44,10 @@ get_header(); ?>
                             $cover = $custom_fields['event_cover_image'];
                             $cover = $cover[0];
                             $cover = wp_get_attachment_image_src($cover, 'large');
-                            $cover = $cover;
+                            $cover = $cover[0];
                             $shift2020_event = $custom_fields['shift2020_event'][0];
+                            $link = $custom_fields['link'][0];
+                            $linkText = $custom_fields['link_text'][0];
 
                             if ($event_end_date) {
                                 $date = date('jS', strtotime($event_start_date)) . ' - ' . date('jS F Y', strtotime($event_end_date));
@@ -60,6 +62,9 @@ get_header(); ?>
                                 <p><?php echo $event_description ?></p>
                                 <p class="event-date-time"><?php echo $date ?></p>
                                 <p class="event-location"><?php echo $event_location ?></p>
+                                <?php if ($link && $linkText) {
+                                    echo '<a href="' . $link . '" title="' . $linkText . '">' . $linkText . '</a>';
+                                } ?>
                             </div>
                         </div>
 
@@ -103,8 +108,10 @@ get_header(); ?>
                             $cover = $custom_fields['event_cover_image'];
                             $cover = $cover[0];
                             $cover = wp_get_attachment_image_src($cover, 'large');
-                            $cover = $cover;
+                            $cover = $cover[0];
                             $shift2020_event = $custom_fields['shift2020_event'][0];
+                            $link = $custom_fields['link'][0];
+                            $linkText = $custom_fields['link_text'][0];
 
                             if ($event_end_date) {
                                 $date = date('jS', strtotime($event_start_date)) . ' - ' . date('jS F Y', strtotime($event_end_date));
@@ -113,12 +120,15 @@ get_header(); ?>
                             }
                         ?>
 
-                        <div class="box-image" style="background-image: url('<?php echo $event_cover_image ?>')">
+                        <div class="box-image" style="background-image: url('<?php echo $cover ?>')">
                             <div class="box-description">
                                 <h3><?php echo $event_title ?></h3>
                                 <p><?php echo $event_description ?></p>
                                 <p class="event-date-time"><?php echo $date ?></p>
                                 <p class="event-location"><?php echo $event_location ?></p>
+                                <?php if ($link && $linkText) {
+                                    echo '<a href="' . $link . '" title="' . $linkText . '">' . $linkText . '</a>';
+                                } ?>
                             </div>
                         </div>
 

@@ -30,7 +30,7 @@ get_header(); ?>
                         $cover = $custom_fields['book_cover'];
                         $cover = $cover[0];
                         $cover = wp_get_attachment_image_src($cover, 'large');
-                        $cover = $cover;
+                        $cover = $cover[0];
                         $link = $custom_fields['link'][0];
                         $linkText = $custom_fields['link_text'][0];
 

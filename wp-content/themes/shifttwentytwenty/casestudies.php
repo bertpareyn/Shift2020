@@ -9327,33 +9327,29 @@ get_header(); ?>
     <div id="container">
         <div id="content">
             <?php 
-                $args = array( 
-                    'post_type' => 'attachment', 
-                    'post_mime_type' => 'image',
-                    'post_status' => 'inherit',
+                $args = array (
+                    'post_type' => 'casestudy',
+                    'post_status' => 'publish',
                     'posts_per_page' => -1,
-                    'tax_query' => array(
-                            array(
-                                'taxonomy' => 'media_tag',
-                                'terms' => 'boxgallery',
-                                'field' => 'slug',
-                            )
-                        )
+                    'ignore_sticky_posts'=> 1
                 );
-
-                $loop = new WP_Query($args);
+                $wp_query = new WP_Query($args); 
                 $count = 0;
                 ?>
                 <div class="image-grid-container">
                     <?php
-                    while ( $loop->have_posts() ) : $loop->the_post();
-                        $image = wp_get_attachment_image('', 'thumbnail', false);
-                        $url = wp_get_attachment_url();
+                    while ( $wp_query->have_posts() ) : the_post();
+                        $custom_fields = get_post_custom($ID);
+                        $description = $custom_fields['description'][0];
+                        $image = $custom_fields['image'];
+                        $image = $image[0];
+                        $image = wp_get_attachment_image_src($image, 'large');
+                        $image = $image[0];
                         $count++;
                     ?>
-                        <div class="grid-image-box" data-description="<?php echo the_excerpt() ?>">
+                        <div class="grid-image-box" data-description="<?php echo $description ?>">
                             <span class="grid-image-helper"></span>
-                            <img class="grid-image" src="<?php echo $url ?>" />
+                            <img class="grid-image" src="<?php echo $image ?>" />
                         </div>
 
                         <?php if ($count == 4) { ?>

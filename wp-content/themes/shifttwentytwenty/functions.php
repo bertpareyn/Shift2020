@@ -107,9 +107,14 @@ function twentythirteen_setup() {
 	add_filter( 'use_default_gallery_style', '__return_false' );
 
 	function custom_excerpt_length( $length ) {
-		return 200000;
+		return 70;
 	}
 	add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+	function new_excerpt_more( $more ) {
+		return ' [...] <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'your-text-domain') . '</a>';
+	}
+	add_filter( 'excerpt_more', 'new_excerpt_more' );
 }
 add_action( 'after_setup_theme', 'twentythirteen_setup' );
 
@@ -351,7 +356,9 @@ function twentythirteen_entry_meta($date_enabled, $categories_enabled, $tags_ena
 	}
 
 	if ( $social_enabled && function_exists( 'ADDTOANY_SHARE_SAVE_KIT' )) {
-		echo '<div class="social-container">' . ADDTOANY_SHARE_SAVE_KIT() . '</div>';
+		if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
+		    ADDTOANY_SHARE_SAVE_KIT( array( 'use_current_page' => true ) );
+		}
 	}
 }
 endif;

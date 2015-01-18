@@ -976,7 +976,8 @@ button,
 input[type="submit"],
 input[type="button"],
 input[type="reset"],
-.tags-links a {
+.tags-links a,
+a.read-more {
 	background: #220e10;
 	background-color: #220e10;
 	border: none;
@@ -996,6 +997,8 @@ input[type="submit"]:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 .tags-links a:hover,
+a.read-more:hover,
+a.read-more:focus,
 button:focus,
 input[type="submit"]:focus,
 input[type="button"]:focus,
@@ -1013,6 +1016,11 @@ input[type="reset"]:focus,
 	padding: 17px 20px;
 	text-decoration: none;
 	text-transform: uppercase;
+}
+
+a.read-more {
+	display: table !important;
+	margin: 12px 0 0 0 !important;
 }
 
 .nav-menu .sub-menu,
@@ -3465,12 +3473,12 @@ footer.entry-meta {
 	}
 }
 
-.addtoany_list {
+/*.addtoany_list {
 	display: block !important;
 	margin-top: 50px;
-}
+}*/
 
-.addtoany_list a,
+/*.addtoany_list a,
 .addtoany_list a img {
 	height: 40px !important;
 	margin-right: 30px !important;
@@ -3479,7 +3487,7 @@ footer.entry-meta {
 
 .addtoany_list a img {
 	margin-right: 0;
-}
+}*/
 
 .header-subnavigation {
 	margin: 0 0 0 15%;

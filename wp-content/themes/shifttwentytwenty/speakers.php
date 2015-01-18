@@ -26,9 +26,9 @@ get_header(); ?>
                     <?php 
                         $custom_fields = get_post_custom($ID);
                         $imageURL = $custom_fields['image'];
-                        $imageURL = $$imageURL[0];
-                        $imageURL = wp_get_attachment_image_src($$imageURL, 'large');
-                        $imageURL = $$imageURL;
+                        $imageURL = $imageURL[0];
+                        $imageURL = wp_get_attachment_image_src($imageURL, 'large');
+                        $imageURL = $imageURL[0];
                         $name = $custom_fields['name'][0];
                         $role = $custom_fields['role'][0];
                         $description = $custom_fields['description'][0];
